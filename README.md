@@ -16,13 +16,65 @@ square, heart, or diamond) from a webcam feed or a static photo using
 ## Project Structure
 
 ```
-face-shape-haircut-recommender/
-├── main.py              # Main application (CLI entry point)
-├── requirements.txt     # Python dependencies
-├── README.md            # This file
-├── sample_images/       # (optional) place test images here
-└── outputs/             # Annotated result images are saved here
+FaceShapeHairstyle/
+│
+├── models/
+│   └── face_landmarker.task
+│
+├── src/
+│   ├── __init__.py
+│   ├── Main.py
+│   ├── face_detector.py
+│   ├── face_shape.py
+│   └── hairstyle_recommender.py
+│
+├── tests/
+│   ├── test_face_detector.py
+│   ├── test_face_shape.py
+│   └── test_recommender.py
+│
+├── requirements.txt
+├── .gitignore
+└── README.md
+
 ```
+
+## Project Architecture
+
+                    ┌─────────────────┐
+                    │   Input Image   │
+                    │   / Webcam      │
+                    └────────┬────────┘
+                             │
+                             ▼
+                    ┌─────────────────┐
+                    │ Face Detector   │
+                    │   MediaPipe     │
+                    └────────┬────────┘
+                             │
+                             ▼
+                    ┌─────────────────┐
+                    │ Face Shape      │
+                    │ Analyzer        │
+                    └────────┬────────┘
+                             │
+                             ▼
+                    ┌─────────────────┐
+                    │ Face Shape      │
+                    │ Classification  │
+                    └────────┬────────┘
+                             │
+                             ▼
+                    ┌─────────────────┐
+                    │ Hairstyle       │
+                    │ Recommender     │
+                    └────────┬────────┘
+                             │
+                             ▼
+                    ┌─────────────────┐
+                    │ Recommendations │
+                    └─────────────────┘
+
 
 ## Requirements
 
